@@ -6,6 +6,7 @@ import java.util.List;
 import oncall.OncallValidator;
 import oncall.domain.DaysName;
 import oncall.domain.Month;
+import oncall.domain.SpecialHoliday;
 import oncall.domain.Worker;
 import oncall.domain.WorkerOrder;
 import oncall.utils.OncallUtils;
@@ -18,8 +19,12 @@ public class OncallController {
         Worker worker = setWorker();
         int days = getDaysInMonth(month.getMonth());
         DaysName daysName = setDaysName(days, month.getStartDay());
-        WorkerOrder workerOrder = setOrder(days, daysName.getDaysName(), worker.getWeekdayWorker(), worker.getHolidayWorker());
-        printResult(month.getMonth(), days, daysName.getDaysName(), workerOrder.getWorkers());
+        SpecialHoliday specialHoliday = setSpecialHoliday(month.getMonth());
+        WorkerOrder workerOrder = setOrder(days, daysName.getDaysName(), worker.getWeekdayWorker(),
+                worker.getHolidayWorker(), specialHoliday.getHoliday());
+        printResult(month.getMonth(), days, daysName.getDaysName(), workerOrder.getWorkers(),
+                specialHoliday.getHoliday());
+        System.out.println(specialHoliday.getHoliday().get(0));
     }
 
     private Month setMonth() {
@@ -70,11 +75,16 @@ public class OncallController {
         return new DaysName(days, startDay);
     }
 
-    private WorkerOrder setOrder(int days, List<String> daysName, List<String> weekdayWorker, List<String> holidayWorker) {
-        return new WorkerOrder(days, daysName, weekdayWorker, holidayWorker);
+    private WorkerOrder setOrder(int days, List<String> daysName, List<String> weekdayWorker,
+                                 List<String> holidayWorker, List<String> specialHoliday) {
+        return new WorkerOrder(days, daysName, weekdayWorker, holidayWorker, specialHoliday);
     }
 
-    private void printResult(int month, int days, List<String> daysName, List<String> finalWorker) {
-        OutputView.printResult(month, days, daysName, finalWorker);
+    private SpecialHoliday setSpecialHoliday(int month) {
+        return new SpecialHoliday(month);
+    }
+
+    private void printResult(int month, int days, List<String> daysName, List<String> finalWorker, List<String> specialHoliday) {
+        OutputView.printResult(month, days, daysName, finalWorker, specialHoliday);
     }
 }
