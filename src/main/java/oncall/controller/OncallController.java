@@ -1,8 +1,10 @@
 package oncall.controller;
 
 import java.util.ArrayList;
+import oncall.domain.Calendar;
 import java.util.List;
 import oncall.OncallValidator;
+import oncall.domain.DaysName;
 import oncall.domain.Month;
 import oncall.domain.Worker;
 import oncall.utils.OncallUtils;
@@ -13,6 +15,8 @@ public class OncallController {
     public void run() {
         Month month = setMonth();
         Worker worker = setWorker();
+        int days = getDaysInMonth(month.getMonth());
+        DaysName daysName = setDaysName(days, month.getStartDay());
 
     }
 
@@ -50,4 +54,23 @@ public class OncallController {
             return setWorker();
         }
     }
+
+    private Integer getDaysInMonth(int month) {
+        for (Calendar calendar : Calendar.values()) {
+            if (calendar.month == month) {
+                return calendar.daysNumber;
+            }
+        }
+        return null;
+    }
+
+    private DaysName setDaysName(int days, String startDay) {
+        return new DaysName(days, startDay);
+    }
+
+
+    private void printResult(int month, int days, List<String> daysName, List<String> finalWorker) {
+
+    }
+
 }
