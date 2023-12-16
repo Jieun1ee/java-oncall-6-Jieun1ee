@@ -41,7 +41,7 @@ public class SpecialHoliday {
             holidays.add("25");
             return holidays;
         }
-        return null;
+        return holidays;
     }
 
     public List<String> getHoliday() {
