@@ -72,6 +72,21 @@ class ApplicationTest extends NsTest {
         });
     }
 
+    @Test
+    void 기능_테스트_jieun() {
+        assertSimpleTest(() -> {
+            run(
+                    "5,월",
+                    "준팍,도밥,고니,수아,루루,글로,솔로스타,우코,슬링키,참새,도리",
+                    "수아,루루,글로,솔로스타,우코,슬링키,참새,도리,준팍,도밥,고니"
+            );
+            assertThat(output()).contains(
+                    "5월 5일 금(휴일) 루루"
+            );
+        });
+    }
+
+
     @Override
     protected void runMain() {
         Application.main(new String[]{});
