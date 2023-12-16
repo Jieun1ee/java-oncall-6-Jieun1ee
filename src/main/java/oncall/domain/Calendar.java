@@ -1,6 +1,6 @@
 package oncall.domain;
 
-public enum Calender {
+public enum Calendar {
     JANUARY(1, 31),
     FEBRARY(2, 28),
     MARCH(3, 31),
@@ -17,7 +17,7 @@ public enum Calender {
     public final Integer month;
     public final Integer daysNumber;
 
-    Calender(int month, int daysNumber) {
+    Calendar(int month, int daysNumber) {
         this.month = month;
         this.daysNumber = daysNumber;
     }
