@@ -51,48 +51,7 @@ public class WorkerOrder {
         list.set(index, list.get(index + 1));
         list.set(index + 1, temp);
     }
-
-
-//    private List<String> setWorkerOrder(int days, List<String> daysName, List<String> weekdayWorker,
-//                                        List<String> holidayWorker, List<String> specialHoliday) {
-//        List<String> order = new ArrayList<>();
-//        int weekdayIndex = 0;
-//        int holidayIndex = 0;
-//
-//        for (int i = 0; i < days; i++) {
-//            String day = daysName.get(i);
-
-//            boolean isWeekday = !day.equals(SATURDAY) && !day.equals(SUNDAY) && !specialHoliday.contains(String.valueOf(i + 1));
-//
-//            if (isWeekday) {
-//                checkContinuity(order, weekdayWorker, weekdayIndex);
-//                order.add(weekdayWorker.get(weekdayIndex % weekdayWorker.size()));
-//                weekdayIndex++;
-//            }
-//
-//            if (!isWeekday) {
-//                checkContinuity(order, holidayWorker, holidayIndex);
-//                order.add(holidayWorker.get(holidayIndex % holidayWorker.size()));
-//                holidayIndex++;
-//            }
-//        }
-//        return order;
-//    }
-
-//    private void checkContinuity(List<String> order, List<String> worker, int index) {
-//        if (index >= 1 && index < order.size()) {
-//            if (worker.get(index % worker.size()).equals(order.get(order.size() - 1))) {
-//                swap(worker, index);
-//            }
-//        }
-//    }
-//
-//    private void swap(List<String> list, int index) {
-//        String temp = list.get(index);
-//        list.set(index, list.get(index + 1));
-//        list.set(index + 1, temp);
-//    }
-
+    
     public List<String> getWorkers() {
         return workers;
     }
