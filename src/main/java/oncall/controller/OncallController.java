@@ -24,7 +24,6 @@ public class OncallController {
                 worker.getHolidayWorker(), specialHoliday.getHoliday());
         printResult(month.getMonth(), days, daysName.getDaysName(), workerOrder.getWorkers(),
                 specialHoliday.getHoliday());
-        System.out.println(specialHoliday.getHoliday().get(0));
     }
 
     private Month setMonth() {
