@@ -7,6 +7,7 @@ import oncall.OncallValidator;
 import oncall.domain.DaysName;
 import oncall.domain.Month;
 import oncall.domain.Worker;
+import oncall.domain.WorkerOrder;
 import oncall.utils.OncallUtils;
 import oncall.view.InputView;
 import oncall.view.OutputView;
@@ -17,7 +18,8 @@ public class OncallController {
         Worker worker = setWorker();
         int days = getDaysInMonth(month.getMonth());
         DaysName daysName = setDaysName(days, month.getStartDay());
-
+        WorkerOrder workerOrder = setOrder(days, daysName.getDaysName(), worker.getWeekdayWorker(), worker.getHolidayWorker());
+        printResult(month.getMonth(), days, daysName.getDaysName(), workerOrder.getWorkers());
     }
 
     private Month setMonth() {
@@ -68,9 +70,11 @@ public class OncallController {
         return new DaysName(days, startDay);
     }
 
-
-    private void printResult(int month, int days, List<String> daysName, List<String> finalWorker) {
-
+    private WorkerOrder setOrder(int days, List<String> daysName, List<String> weekdayWorker, List<String> holidayWorker) {
+        return new WorkerOrder(days, daysName, weekdayWorker, holidayWorker);
     }
 
+    private void printResult(int month, int days, List<String> daysName, List<String> finalWorker) {
+        OutputView.printResult(month, days, daysName, finalWorker);
+    }
 }
