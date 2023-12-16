@@ -9,11 +9,13 @@ public class WorkerOrder {
 
     private List<String> workers;
 
-    public WorkerOrder(int days, List<String> daysName, List<String> weekdayWorker, List<String> holidayWorker) {
-        this.workers = setWorkerOrder(days, daysName, weekdayWorker, holidayWorker);
+    public WorkerOrder(int days, List<String> daysName, List<String> weekdayWorker, List<String> holidayWorker,
+                       List<String> specialHoliday) {
+        this.workers = setWorkerOrder(days, daysName, weekdayWorker, holidayWorker, specialHoliday);
     }
 
-    private List<String> setWorkerOrder (int days, List<String> daysName, List<String> weekdayWorker, List<String> holidayWorker) {
+    private List<String> setWorkerOrder(int days, List<String> daysName, List<String> weekdayWorker,
+                                        List<String> holidayWorker, List<String> specialHoliday) {
         List<String> order = new ArrayList<>();
         int weekdayIndex = 0;
         int holidayIndex = 0;
@@ -21,7 +23,7 @@ public class WorkerOrder {
         for (int i = 0; i < days; i++) {
             String day = daysName.get(i);
 
-            if (!day.equals(SATURDAY) && !day.equals(SUNDAY)) {
+            if (!day.equals(SATURDAY) && !day.equals(SUNDAY) && !specialHoliday.contains(String.valueOf(i + 1))) {
                 order.add(weekdayWorker.get(weekdayIndex % weekdayWorker.size()));
                 weekdayIndex++;
                 continue;
