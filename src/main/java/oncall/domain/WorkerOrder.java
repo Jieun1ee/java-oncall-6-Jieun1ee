@@ -23,7 +23,8 @@ public class WorkerOrder {
         for (int i = 0; i < days; i++) {
             String day = daysName.get(i);
 
-            boolean isWeekday = !day.equals(SATURDAY) && !day.equals(SUNDAY) && !specialHoliday.contains(String.valueOf(i + 1));
+            boolean isWeekday =
+                    !day.equals(SATURDAY) && !day.equals(SUNDAY) && !specialHoliday.contains(String.valueOf(i + 1));
 
             if (isWeekday) {
                 checkContinuity(order, weekdayWorker, weekdayIndex);
@@ -51,7 +52,7 @@ public class WorkerOrder {
         list.set(index, list.get(index + 1));
         list.set(index + 1, temp);
     }
-    
+
     public List<String> getWorkers() {
         return workers;
     }

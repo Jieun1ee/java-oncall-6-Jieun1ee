@@ -83,7 +83,8 @@ public class OncallController {
         return new SpecialHoliday(month);
     }
 
-    private void printResult(int month, int days, List<String> daysName, List<String> finalWorker, List<String> specialHoliday) {
+    private void printResult(int month, int days, List<String> daysName, List<String> finalWorker,
+                             List<String> specialHoliday) {
         OutputView.printResult(month, days, daysName, finalWorker, specialHoliday);
     }
 }

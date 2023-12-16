@@ -1,7 +1,6 @@
 package oncall;
 
 import oncall.controller.OncallController;
-import oncall.utils.OncallUtils;
 
 public class Application {
     public static void main(String[] args) {
